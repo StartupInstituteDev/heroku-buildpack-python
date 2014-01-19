@@ -5,6 +5,10 @@ This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) fo
 
 [![Build Status](https://secure.travis-ci.org/Bouke/heroku-buildpack-python.png?branch=master)](http://travis-ci.org/Bouke/heroku-buildpack-python)
 
+This extends the normal Python/Django buildpack with installing the Maxmind GeoIP C Library and downloading the GeoIP City Database. Using Django, you'd only have to include the following in your settings:
+
+    GEOIP_PATH = '/app/GeoLiteCity.dat'
+
 Usage
 -----
 
@@ -13,22 +17,17 @@ Example usage:
     $ ls
     Procfile  requirements.txt  web.py
 
-    $ heroku create --stack cedar --buildpack git://github.com/heroku/heroku-buildpack-python.git
+    $ heroku create --stack cedar --buildpack git://github.com/Bouke/heroku-buildpack-python-geoip.git
 
     $ git push heroku master
     ...
     -----> Fetching custom git buildpack... done
     -----> Python app detected
-    -----> No runtime.txt provided; assuming python-2.7.3.
-    -----> Preparing Python runtime (python-2.7.3)
-    -----> Installing Distribute (0.6.34)
-    -----> Installing Pip (1.2.1)
-    -----> Installing dependencies using Pip (1.2.1)
-           Downloading/unpacking Flask==0.7.2 (from -r requirements.txt (line 1))
-           Downloading/unpacking Werkzeug>=0.6.1 (from Flask==0.7.2->-r requirements.txt (line 1))
-           Downloading/unpacking Jinja2>=2.4 (from Flask==0.7.2->-r requirements.txt (line 1))
-           Installing collected packages: Flask, Werkzeug, Jinja2
-           Successfully installed Flask Werkzeug Jinja2
+    -----> No runtime.txt provided; assuming python-2.7.4.
+    -----> Using Python runtime (python-2.7.4)
+    -----> Installing Maxmind GeoIP C Library
+           GeoIP City Database is available at: /app/GeoLiteCity.dat
+    -----> Installing dependencies using Pip (1.3.1)
            Cleaning up...
 
 You can also add it to upcoming builds of an existing application:

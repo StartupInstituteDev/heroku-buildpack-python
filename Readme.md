@@ -32,7 +32,7 @@ Example usage:
 
 You can also add it to upcoming builds of an existing application:
 
-    $ heroku config:add BUILDPACK_URL=git://github.com/Bouke/heroku-buildpack-python.git
+    $ heroku config:add BUILDPACK_URL=git://github.com/Bouke/heroku-buildpack-python-geoip.git
 
 The buildpack will detect your app as Python if it has the file `requirements.txt` in the root. 
 

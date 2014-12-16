@@ -156,6 +156,12 @@ source $BIN_DIR/steps/setuptools
 # Uninstall removed dependencies with Pip.
 source $BIN_DIR/steps/pip-uninstall
 
+# Maxmind GeoIP C Library support.
+# See [`bin/steps/geoip`](geoip.html).
+bpwatch start geoip_install
+  source $BIN_DIR/steps/geoip
+bpwatch stop geoip_install
+
 # Mercurial support.
 source $BIN_DIR/steps/mercurial
 

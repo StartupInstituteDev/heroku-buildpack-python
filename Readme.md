@@ -18,6 +18,8 @@ Example usage:
     ...
     -----> Python app detected
     -----> Installing runtime (python-2.7.8)
+    -----> Installing Maxmind GeoIP C Library
+           GeoIP City Database is available at: /app/GeoLiteCity.dat
     -----> Installing dependencies using pip
            Downloading/unpacking requests (from -r requirements.txt (line 1))
            Installing collected packages: requests
@@ -28,7 +30,7 @@ Example usage:
 
 You can also add it to upcoming builds of an existing application:
 
-    $ heroku config:add BUILDPACK_URL=git://github.com/heroku/heroku-buildpack-python.git
+    $ heroku config:add BUILDPACK_URL=git://github.com/StartupInstituteDev/heroku-buildpack-python.git
 
 The buildpack will detect your app as Python if it has the file `requirements.txt` in the root.
 
